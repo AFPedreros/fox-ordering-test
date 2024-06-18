@@ -65,6 +65,7 @@ export const VowelForm = ({ setResult }: VowelFormProps) => {
             isInvalid={!!errors.text && dirtyFields.text}
             label="Frase"
             type="text"
+            onClear={() => field.onChange("")}
             {...field}
           />
         )}
