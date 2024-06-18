@@ -23,8 +23,8 @@ export async function searchMovies(search: string, page?: number) {
     const response = await axios.get(apiUrl);
     const results = response.data.Search as Movie[];
 
-    return results;
+    return { results, totalResults: response.data.totalResults };
   } catch (error) {
-    return [];
+    return { results: [], totalResults: 0 };
   }
 }

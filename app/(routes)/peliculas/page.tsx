@@ -1,5 +1,6 @@
 import { CheckboxGroup } from "@nextui-org/checkbox";
 import { Divider } from "@nextui-org/divider";
+import { Pagination } from "@nextui-org/pagination";
 
 import { getMovies } from "@/api/movies";
 import { CustomCheckbox } from "@/components/custom-checkbox";
@@ -8,7 +9,7 @@ import { title } from "@/components/primitives";
 import { SearchInput } from "@/components/search-input";
 
 export default async function MoviesPage() {
-  const movies = await getMovies({});
+  const { results: movies, totalResults } = await getMovies({});
 
   return (
     <div className="flex w-full h-full gap-x-6">
@@ -40,17 +41,19 @@ export default async function MoviesPage() {
         </aside>
       </div>
 
-      <div className="flex-col flex-1 w-full md:pl-72 ">
-        <header className="relative z-20 flex flex-col gap-2 px-4 pt-2 pb-3 rounded-medium bg-default-50 md:pt-3">
+      <div className="flex flex-col items-center flex-1 w-full gap-6 md:pl-72 ">
+        <header className="relative z-20 flex flex-col w-full gap-2 px-4 pt-2 pb-3 rounded-medium bg-default-50 md:pt-3">
           <div className="flex items-center justify-between gap-2">
             <h1 className={title({ size: "sm" })}>Películas</h1>
             <SearchInput />
           </div>
         </header>
 
-        <div className="grid grid-cols-1 gap-5 mt-6 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           <PaginatedMovies initialMovies={movies} />
         </div>
+
+        <Pagination initialPage={1} size="lg" total={totalResults} />
       </div>
     </div>
   );
