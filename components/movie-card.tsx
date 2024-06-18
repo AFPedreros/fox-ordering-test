@@ -1,5 +1,3 @@
-"use client";
-
 import { Image } from "@nextui-org/image";
 
 import { Movie } from "@/types";
@@ -10,9 +8,8 @@ export const MovieCard = (movie: Movie) => {
       <Image
         isBlurred
         isZoomed
-        removeWrapper
         alt={movie.Title}
-        className="w-full bg-red-100 group-hover:scale-110 sm:aspect-auto"
+        className="w-full group-hover:scale-110 sm:aspect-auto"
         src={movie.Poster}
       />
       <h3 className="font-medium text-small text-default-700">{movie.Title}</h3>

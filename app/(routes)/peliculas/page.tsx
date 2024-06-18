@@ -7,23 +7,7 @@ import { PaginatedMovies } from "@/components/paginated-movies";
 import { PaginationForm } from "@/components/pagination-form";
 import { title } from "@/components/primitives";
 import { SearchForm } from "@/components/search-form";
-import { Movie } from "@/types";
-
-const countMoviesByYear = (movies: Movie[]): Record<string, number> => {
-  const counts: Record<string, number> = {};
-
-  movies.map((movie) => {
-    const year = movie.Year;
-
-    if (counts[year]) {
-      counts[year]++;
-    } else {
-      counts[year] = 1;
-    }
-  });
-
-  return counts;
-};
+import { countMoviesByYear } from "@/lib/utils";
 
 export default async function MoviesPage({
   searchParams,
@@ -82,7 +66,7 @@ export default async function MoviesPage({
 
         <PaginationForm
           page={Number(searchParams.page) ?? 1}
-          total={totalResults}
+          total={Math.ceil(totalResults / 10)}
         />
       </div>
     </div>

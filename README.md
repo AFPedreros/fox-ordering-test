@@ -1,53 +1,23 @@
-# Next.js & NextUI Template
+# Prueba técnica Fox Ordering
 
-This is a template for creating applications using Next.js 14 (app directory) and NextUI (v2).
+Este proyecto ha sido desarrollado como parte de una prueba técnica para FrontEnd Developer, construida en Next.js 14. La prueba incluye la implementación de una función para manipulación de strings, el desarrollo de un proyecto en React que consume una API para mostrar información de películas con opciones de filtrado y paginación, y la creación de una maqueta utilizando HTML y CSS.
 
-[Try it on CodeSandbox](https://githubbox.com/nextui-org/next-app-template)
+## Tecnologías Utilizadas
 
-## Technologies Used
+- **Framework**: Next.js 14
+- **Estilos**: Tailwind CSS
+- **Framework de UI**: NextUI
+- **Animaciones**: Framer Motion
+- **Llamadas API**: Axios
+- **API de Contenidos**: OMDb (The Open Movie Database)
+- **Gestión de Formularios**: React Hook Form con validación utilizando Zod
 
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [NextUI v2](https://nextui.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
+## Instalación y Ejecución Local
 
-## How to Use
+Para comenzar a trabajar con este proyecto en tu entorno local, simplemente sigue estos pasos:
 
-### Use the template with create-next-app
-
-To create a new project based on this template using `create-next-app`, run the following command:
-
-```bash
-npx create-next-app -e https://github.com/nextui-org/next-app-template
-```
-
-### Install dependencies
-
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
-
-```bash
-npm install
-```
-
-### Run the development server
-
-```bash
-npm run dev
-```
-
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
-```bash
-public-hoist-pattern[]=*@nextui-org/*
-```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
-
-## License
-
-Licensed under the [MIT license](https://github.com/nextui-org/next-app-template/blob/main/LICENSE).
+1. Clona el repositorio a tu equipo.
+2. Abre la terminal, navega hasta el directorio del proyecto e instala las dependencias con el comando `npm install`.
+3. Consigue una API key de [OMDb](https://www.omdbapi.com).
+4. Crea un archivo `.env` siguiendo el formato del archivo `.env.example` para configurar las variables de entorno.
+5. Ejecuta `npm run dev` para iniciar el servidor de desarrollo. Abre `http://localhost:3000` en tu navegador para ver la aplicación.
