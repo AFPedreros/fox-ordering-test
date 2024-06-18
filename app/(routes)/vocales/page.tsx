@@ -11,7 +11,7 @@ export default function VowelPage() {
   const [result, setResult] = React.useState("");
 
   return (
-    <Card className="max-w-xl">
+    <Card>
       <CardHeader className="flex-col items-start gap-1 p-6 text-left">
         <h1 className={title({ size: "sm" })}>Quita las vocales</h1>
         <p className="font-normal text-small text-default-500">
@@ -19,15 +19,13 @@ export default function VowelPage() {
         </p>
       </CardHeader>
 
-      <Divider />
-
-      <CardBody className="p-6">
+      <CardBody className="p-6 pt-0">
         <VowelForm setResult={setResult} />
       </CardBody>
 
       <Divider />
 
-      <CardFooter className="p-6">
+      <CardFooter className="px-6 py-4">
         <p>
           <span className="font-bold">Resultado</span>: {result}
         </p>
