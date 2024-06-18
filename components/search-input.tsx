@@ -6,9 +6,10 @@ export const SearchInput = () => {
   return (
     <Input
       aria-label="Search"
-      className="max-w-xs"
+      className="w-full"
       labelPlacement="outside"
-      placeholder="Buscar..."
+      name="search"
+      placeholder="Título..."
       startContent={
         <SearchIcon className="flex-shrink-0 text-base pointer-events-none text-primary-foreground/75" />
       }

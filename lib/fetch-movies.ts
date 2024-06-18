@@ -17,13 +17,14 @@ export function getReleaseYear(content: any) {
 }
 
 export async function searchMovies(search: string, page?: number) {
-  const apiUrl = `http://www.omdbapi.com/?apiKey=${apiKey}&s=${search}&type=movie&plot=full&page=${page}`;
+  const apiUrl = `http://www.omdbapi.com/?apiKey=${apiKey}&s=${search}&type=movie&page=${page}`;
 
   try {
     const response = await axios.get(apiUrl);
     const results = response.data.Search as Movie[];
+    const totalResults = response.data.totalResults as number;
 
-    return { results, totalResults: response.data.totalResults };
+    return { results, totalResults };
   } catch (error) {
     return { results: [], totalResults: 0 };
   }

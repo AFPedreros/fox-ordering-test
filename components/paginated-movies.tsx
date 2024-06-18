@@ -7,8 +7,6 @@ export const PaginatedMovies = ({
 }: {
   initialMovies: Movie[] | undefined;
 }) => {
-  // console.log(initialMovies);
-
   return (
     <>
       {initialMovies?.map((movie) => (

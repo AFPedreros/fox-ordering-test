@@ -1,15 +1,22 @@
 import { CheckboxGroup } from "@nextui-org/checkbox";
 import { Divider } from "@nextui-org/divider";
-import { Pagination } from "@nextui-org/pagination";
 
 import { getMovies } from "@/api/movies";
 import { CustomCheckbox } from "@/components/custom-checkbox";
 import { PaginatedMovies } from "@/components/paginated-movies";
+import { PaginationForm } from "@/components/pagination-form";
 import { title } from "@/components/primitives";
-import { SearchInput } from "@/components/search-input";
+import { SearchForm } from "@/components/search-form";
 
-export default async function MoviesPage() {
-  const { results: movies, totalResults } = await getMovies({});
+export default async function MoviesPage({
+  searchParams,
+}: {
+  searchParams: { search: string; page: string };
+}) {
+  const { results: movies, totalResults } = await getMovies({
+    search: searchParams.search,
+    page: searchParams.page ? Number(searchParams.page) : 1,
+  });
 
   return (
     <div className="flex w-full h-full gap-x-6">
@@ -43,9 +50,9 @@ export default async function MoviesPage() {
 
       <div className="flex flex-col items-center flex-1 w-full gap-6 md:pl-72 ">
         <header className="relative z-20 flex flex-col w-full gap-2 px-4 pt-2 pb-3 rounded-medium bg-default-50 md:pt-3">
-          <div className="flex items-center justify-between gap-2">
+          <div className="flex flex-col items-center justify-between gap-2 md:flex-row">
             <h1 className={title({ size: "sm" })}>Películas</h1>
-            <SearchInput />
+            <SearchForm />
           </div>
         </header>
 
@@ -53,7 +60,10 @@ export default async function MoviesPage() {
           <PaginatedMovies initialMovies={movies} />
         </div>
 
-        <Pagination initialPage={1} size="lg" total={totalResults} />
+        <PaginationForm
+          page={Number(searchParams.page) ?? 1}
+          total={totalResults}
+        />
       </div>
     </div>
   );
