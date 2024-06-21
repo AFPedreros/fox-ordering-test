@@ -42,7 +42,10 @@ export const Navbar = () => {
       >
         <ul className="justify-start hidden gap-4 ml-2 sm:flex">
           {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href} isActive={pathname === item.href}>
+            <NavbarItem
+              key={item.href}
+              isActive={pathname.startsWith(item.href)}
+            >
               <NextLink href={item.href}>{item.label}</NextLink>
             </NavbarItem>
           ))}
@@ -72,7 +75,9 @@ export const Navbar = () => {
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
-                color={pathname === item.href ? "primary" : "foreground"}
+                color={
+                  pathname.startsWith(item.href) ? "primary" : "foreground"
+                }
                 href={item.href}
                 size="lg"
               >

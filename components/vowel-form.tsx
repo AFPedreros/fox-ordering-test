@@ -77,7 +77,7 @@ export const VowelForm = ({ setResult }: VowelFormProps) => {
         isDisabled={!isValid || isSubmitting}
         type="submit"
       >
-        Submit
+        Enviar
       </Button>
     </form>
   );
