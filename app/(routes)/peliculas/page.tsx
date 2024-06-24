@@ -19,7 +19,7 @@ export default async function MoviesPage({
     page: searchParams.page ? Number(searchParams.page) : 1,
   });
 
-  const counts = countMoviesByYear(movies);
+  const counts = !!movies ? countMoviesByYear(movies) : {};
 
   return (
     <div className="flex w-full h-full gap-x-6">
@@ -60,14 +60,19 @@ export default async function MoviesPage({
           </div>
         </header>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          <PaginatedMovies initialMovies={movies} />
-        </div>
+        {!movies && <p>No hay resultados</p>}
+        {!!movies && (
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            <PaginatedMovies initialMovies={movies} />
+          </div>
+        )}
 
-        <PaginationForm
-          page={Number(searchParams.page) ?? 1}
-          total={Math.ceil(totalResults / 10)}
-        />
+        {!!movies && (
+          <PaginationForm
+            page={Number(searchParams.page) ?? 1}
+            total={Math.ceil(totalResults / 10)}
+          />
+        )}
       </div>
     </div>
   );

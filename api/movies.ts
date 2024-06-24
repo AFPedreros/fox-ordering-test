@@ -17,5 +17,7 @@ export async function getMovies({
 export async function searchMovie(formData: FormData) {
   const search = formData.get("search");
 
+  if (!search) return;
+
   redirect(`/peliculas?search=${search}&page=1`);
 }
